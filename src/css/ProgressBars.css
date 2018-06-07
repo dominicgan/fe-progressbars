@@ -1,0 +1,21 @@
+.progressBars {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.progressBars progress {
+	display: block;
+	width: 100%;
+	max-width: 500px;
+}
+
+@media screen and (max-width: 640px) {
+	.progressBars {
+		padding: 0 10px;
+		margin-bottom: 10px;
+	}
+}

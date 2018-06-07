@@ -1,0 +1,49 @@
+.progressBarsControl {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	max-width: 500px;
+	margin: 0 auto;
+}
+
+.progressBarsControl__select {
+	width: 40%;
+}
+
+.progressBarsControl select {
+	width: 100%;
+	display: block;
+}
+
+.progressBarsControl__buttons {
+	width: 60%;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+}
+
+.progressBarsControl button {
+	flex: 1;
+	margin-left: 5px;
+}
+
+
+
+@media screen and (max-width: 640px) {
+	.progressBarsControl {
+		padding: 0 10px;
+	}
+
+	.progressBarsControl__select,
+	.progressBarsControl__buttons {
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.progressBarsControl button:first-child {
+		margin-left: 0;
+	}
+}
