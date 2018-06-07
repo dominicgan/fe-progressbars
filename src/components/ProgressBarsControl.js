@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import '../css/ProgressBarsControl.css';
 
 export default class ProgressBarsControl extends Component {
+	handleSubmit(e){
+		e.preventDefault();
+	}
 	renderBarSelect(bars) {
 		let output = bars.map((el, i) => {
 			return (
@@ -24,14 +27,14 @@ export default class ProgressBarsControl extends Component {
 	}
 	render() {
 		return (
-			<div className='progressBarsControl'>
+			<form className='progressBarsControl' onSubmit={this.handleSubmit.bind(this)}>
 				<div className='progressBarsControl__select'>
 					{this.renderBarSelect(this.props.bars)}
 				</div>
 				<div className='progressBarsControl__buttons'>
 					{this.renderButtons(this.props.buttons)}
 				</div>
-			</div>
+			</form>
 			)
 	}
 }
