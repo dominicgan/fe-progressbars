@@ -11,7 +11,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    fetch('http://pb-api.herokuapp.com/bars')
+    fetch('https://pb-api.herokuapp.com/bars')
       .then((res) => res.json())
       .then((data) => this.setState({
         'data': data,
