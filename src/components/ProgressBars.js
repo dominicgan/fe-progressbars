@@ -4,7 +4,7 @@ import '../css/ProgressBars.css';
 export default class ProgressBars extends Component {
 	renderBars(bars) {
 		let output = bars.map((el, i) => {
-			return (<progress key={i} value={el} max={this.props.limit}/>)
+			return (<progress key={i} value={el} className={el > 100 ? 'limit-break' : ''} max={this.props.limit}></progress>)
 		});
 		return output;
 	}
