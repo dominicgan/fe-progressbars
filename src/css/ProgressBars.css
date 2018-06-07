@@ -1,4 +1,6 @@
 .progressBars {
+	--color: #77f;
+	--alt-color: #f77;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -7,11 +9,52 @@
 	margin: 0 auto;
 }
 
-.progressBars progress {
+progress {
 	display: block;
 	width: 100%;
 	max-width: 500px;
+	margin-bottom: 10px;
+	padding: 4px;
+	border: 0 none;
+	height: 45px;
+	position: relative;
 }
+
+progress:after {
+	content: attr(value);
+	display: block;
+	color: #fff;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+progress {
+	background: #444;
+}
+
+/* moz */
+progress::-moz-progress-bar {
+	background: var(--color);
+}
+
+progress.limit-break::-moz-progress-bar {
+	background: var(--alt-color);
+}
+
+/* webkit */
+progress::-webkit-progress-bar {
+	background: transparent;
+}
+
+progress::-webkit-progress-value {  
+	background: var(--color);
+}
+
+progress.limit-break::-webkit-progress-value {  
+	background: var(--alt-color);
+}  
 
 @media screen and (max-width: 640px) {
 	.progressBars {
