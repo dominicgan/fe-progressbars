@@ -14,8 +14,8 @@ class App extends Component {
     fetch('https://pb-api.herokuapp.com/bars')
       .then((res) => res.json())
       .then((data) => this.setState({
-        'buttons': data.buttons,
         'data': JSON.parse(JSON.stringify(data)),
+        'buttons': data.buttons.sort((a, b) => (a - b)),
         'bars': data.bars,
         'limit': data.limit,
         'ready': true
