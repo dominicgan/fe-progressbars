@@ -36,9 +36,6 @@ class App extends Component {
     // - if (newValue < 0) => newValue = 0
     if (newVal < 0) {
       newVal = 0;
-    // - if (newValue > limit) => newValue = limit
-    } else if (newVal > this.state.limit) {
-      newVal = parseInt(this.state.limit, 10);
     }
 
     newBars[targetId] = newVal;
