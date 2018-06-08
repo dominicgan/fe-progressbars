@@ -21,7 +21,7 @@ progress {
 }
 
 progress:after {
-	content: attr(value);
+	content: attr(value) '%';
 	display: block;
 	color: #fff;
 	position: absolute;
