@@ -1,0 +1,52 @@
+.progressBarsControl {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	max-width: 500px;
+	margin: 0 auto;
+
+	@media screen and (max-width: 640px) {
+		padding: 0 10px;
+	}
+
+	&__select {
+		width: 40%;
+
+		@media screen and (max-width: 640px) {
+			width: 100%;
+			margin-top: 10px;
+		}
+
+		select {
+			width: 100%;
+			display: block;
+		}
+	}
+
+
+	&__buttons {
+		width: 60%;
+		display: flex;
+		flex-direction: row;
+		align-items: stretch;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+
+		@media screen and (max-width: 640px) {
+			width: 100%;
+			margin-top: 10px;
+		}
+
+		button {
+			flex: 1;
+			margin-left: 5px;
+
+			@media screen and (max-width: 640px) {
+				&::first-child {
+					margin-left: 0;
+				}
+			}
+		}
+	}
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/ProgressBarsControl.css';
+import '../sass/ProgressBarsControl.scss';
 
 export default class ProgressBarsControl extends Component {
 	handleSubmit(e){
