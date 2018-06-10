@@ -88,11 +88,15 @@ class App extends Component {
           </article>
           <ProgressBars bars={this.state.bars} limit={this.state.limit} />
           <ProgressBarsControl bars={this.state.bars} selectValue={this.state.targetBarIndex} onChangeTarget={this.handleTargetChange.bind(this)} buttons={this.state.buttons} onClickButton={this.handleButtonClick.bind(this)}/>
+          
+          {/** debug only
           <div className="debug">
             <pre>{JSON.stringify(this.state)}</pre>
             <pre>{JSON.stringify(this.state.bars)}</pre>
             <pre>{JSON.stringify(this.state.barsFinal)}</pre>
           </div>
+          **/}
+
         </div>
       );
     } else return null;
