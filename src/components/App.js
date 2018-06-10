@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'normalize.css';
 import '../css/App.css';
 import ProgressBars from './ProgressBars';
 import ProgressBarsControl from './ProgressBarsControl';
