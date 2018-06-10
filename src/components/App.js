@@ -7,7 +7,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'ready': false
+      'ready': false,
+      'interval': null
     };
   }
   componentDidMount() {
@@ -17,6 +18,7 @@ class App extends Component {
         'data': JSON.parse(JSON.stringify(data)),
         'buttons': data.buttons.sort((a, b) => (a - b)),
         'bars': data.bars,
+        'barsFinal': data.bars,
         'limit': data.limit,
         'ready': true,
         'targetBarIndex': 0
@@ -29,23 +31,56 @@ class App extends Component {
   handleButtonClick(el){
     // update target bar value with with button amt
     let targetId = this.state.targetBarIndex;
-    let newBars = this.state.bars;
-    let newVal = newBars[targetId] + parseInt(el,10);
+    let newBars = JSON.parse(JSON.stringify(this.state.barsFinal));
+    let curVal = parseInt(newBars[targetId], 10);
+    let newVal = curVal + parseInt(el,10);
 
-    // add delimiter logic
-    // - if (newValue < 0) => newValue = 0
-    if (newVal < 0) {
-      newVal = 0;
+    // - if (newValue < 0) set newValue to 0
+    if (newVal < 0) { newVal = 0; }
+
+    this.progressBarValue(targetId, newVal);
+
+    // store value in temp array: 
+    // for reference at start of function
+    // if function is triggered before previous instance 
+    // has completed, value to increment will be wrong if
+    // this.state.bars is used in setting new value
+    newBars[targetId] = newVal;
+    this.setState({'barsFinal': newBars});
+  }
+  progressBarValue(targetId, newVal) {
+    // clearInterval (if exists)
+    clearInterval(this.state.interval);
+    let intervalObj;
+    if (this.state.bars[targetId] < newVal) {
+      // increment bar
+      intervalObj = setInterval(() => {
+        let newBars = this.state.bars;
+        if (newBars[targetId] < newVal) {
+          newBars[targetId]++;
+        }
+        this.setState({'bars': newBars});
+      }, 8);
+    } else {
+      // decrement bar
+      intervalObj = setInterval(() => {
+        let newBars = this.state.bars;
+        if (newBars[targetId] > newVal) {
+          newBars[targetId]--;
+        }
+        this.setState({'bars': newBars});
+      }, 8);
     }
 
-    newBars[targetId] = newVal;
-    this.setState({'bars': newBars});
+    this.setState({'interval': intervalObj});
   }
   render() {
     if (this.state.ready) {
       return (
         <div className="App">
           <pre>{JSON.stringify(this.state)}</pre>
+          <pre>{JSON.stringify(this.state.bars)}</pre>
+          <pre>{JSON.stringify(this.state.barsFinal)}</pre>
           <ProgressBars bars={this.state.bars} limit={this.state.limit} />
           <ProgressBarsControl bars={this.state.bars} selectValue={this.state.targetBarIndex} onChangeTarget={this.handleTargetChange.bind(this)} buttons={this.state.buttons} onClickButton={this.handleButtonClick.bind(this)}/>
         </div>
