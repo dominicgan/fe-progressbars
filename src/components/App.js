@@ -82,8 +82,8 @@ class App extends Component {
           <article>
             <header>
               <h1>Progress Bars</h1>
-              <p className="desc">Use the select bar on the left to select the progress bar to change</p>
-              <p className="desc">Click on the buttons on the right to increment or decrement values of the targeted progress bar.</p>
+              <p className="desc">Use the select bar <span className='desk'>on the left</span><span className="mob" aria-hidden="true">below</span> to select the progress bar to change</p>
+              <p className="desc">Click on the buttons <span className="desk">on the right</span><span className="mob" aria-hidden="true">below that</span> to increment or decrement values of the targeted progress bar.</p>
             </header>
           </article>
           <ProgressBars bars={this.state.bars} limit={this.state.limit} />

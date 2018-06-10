@@ -17,10 +17,22 @@ article,
 	margin: 0 auto;
 }
 
+.mob {
+	display: none;
+}
+
 @media screen and (max-width: 640px) {
 	article,
 	.debug {
 		padding: 0 10px;
+	}
+
+	.desk {
+		display: none;
+	}
+
+	.mob {
+		display: initial;
 	}
 }
 
