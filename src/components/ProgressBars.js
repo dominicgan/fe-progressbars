@@ -3,9 +3,9 @@ import '../css/ProgressBars.css';
 
 export default class ProgressBars extends Component {
 	renderBars(bars) {
-		let output = bars.map((el, i) => {
+		let output = bars.map((value, i) => {
 			// set .limit-break class if value surpasses defined limit in props
-			return (<progress key={i} value={el} className={el > this.props.limit ? 'limit-break' : ''} max={this.props.limit}></progress>)
+			return (<progress key={i} value={value} className={value > this.props.limit ? 'limit-break' : ''} max={this.props.limit}></progress>)
 		});
 		return output;
 	}
