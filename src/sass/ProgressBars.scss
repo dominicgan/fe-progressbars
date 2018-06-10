@@ -1,8 +1,4 @@
 .progressBars {
-	--color: #77f;
-	--alt-color: #f77;
-	--bg-color: #444;
-	--font-color: #fff;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
@@ -12,25 +8,28 @@
 
 	@media screen and (max-width: 640px) {
 		padding: 0 10px;
+	}
+
+	&__wrapper {
+		width: 100%;
+		max-width: 500px;
 		margin-bottom: 10px;
+		position: relative;
 	}
 }
 
 progress {
 	display: block;
 	width: 100%;
-	max-width: 500px;
-	margin-bottom: 10px;
 	padding: 4px;
 	border: 0 none;
 	height: 45px;
 	position: relative;
-	background: var(--bg-color);
+	background: var(--dark-grey);
 
-	&:after {
-		content: attr(value) '%';
+	+ .bar-value {
 		display: block;
-		color: var(--font-color);
+		color: var(--white);
 		position: absolute;
 		top: 50%;
 		left: 50%;
@@ -39,7 +38,7 @@ progress {
 
 	// moz
 	&::-moz-progress-bar {
-		background: var(--color);
+		background: var(--blue);
 	}
 
 	// webkit
@@ -48,16 +47,16 @@ progress {
 	}
 
 	&::-webkit-progress-value {  
-		background: var(--color);
+		background: var(--blue);
 	}
 
 	&.limit-break {
 		&::-moz-progress-bar {
-			background: var(--alt-color);
+			background: var(--red);
 		}
 
 		&::-webkit-progress-value {  
-			background: var(--alt-color);
+			background: var(--red);
 		}  
 	}
 }

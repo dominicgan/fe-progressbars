@@ -5,7 +5,12 @@ export default class ProgressBars extends Component {
 	renderBars(bars) {
 		let output = bars.map((value, i) => {
 			// set .limit-break class if value surpasses defined limit in props
-			return (<progress key={i} value={value} className={value > this.props.limit ? 'limit-break' : ''} max={this.props.limit}></progress>)
+			return (
+				<div className="progressBars__wrapper">
+					<progress key={i} value={value} className={value > this.props.limit ? 'limit-break' : ''} max={this.props.limit}></progress>
+					<span className="bar-value">{value + '%'}</span>
+				</div>
+				)
 		});
 		return output;
 	}

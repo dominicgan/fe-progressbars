@@ -12,15 +12,40 @@
 
 	&__select {
 		width: 40%;
+		position: relative;
 
 		@media screen and (max-width: 640px) {
 			width: 100%;
 			margin-top: 10px;
 		}
 
+		&:after {
+			content: '';
+			width: 0; 
+			height: 0; 
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+
+			border-top: 8px solid var(--dark-grey);
+
+			position: absolute;
+			display: block;
+			top: 50%;
+			right: 10px;
+			transform: translateY(-50%);
+			pointer-events: none;
+		}
+
 		select {
 			width: 100%;
 			display: block;
+			-webkit-appearance: none;
+			appearance: none;
+			padding: 5px 10px;
+			border: solid 2px var(--dark-grey);
+			background-color: var(--white);
+			border-radius: 0;
+
 		}
 	}
 
@@ -41,9 +66,15 @@
 		button {
 			flex: 1;
 			margin-left: 5px;
+			-webkit-appearance: none;
+			appearance: none;
+			padding: 5px 10px;
+			border: solid 2px var(--dark-grey);
+			background-color: var(--light-grey);
+			cursor: pointer;
 
 			@media screen and (max-width: 640px) {
-				&::first-child {
+				&:first-child {
 					margin-left: 0;
 				}
 			}

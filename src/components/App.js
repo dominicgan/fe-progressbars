@@ -79,11 +79,20 @@ class App extends Component {
     if (this.state.ready) {
       return (
         <div className="App">
-          <pre>{JSON.stringify(this.state)}</pre>
-          <pre>{JSON.stringify(this.state.bars)}</pre>
-          <pre>{JSON.stringify(this.state.barsFinal)}</pre>
+          <article>
+            <header>
+              <h1>Progress Bars</h1>
+              <p className="desc">Use the select bar on the left to select the progress bar to change</p>
+              <p className="desc">Click on the buttons on the right to increment or decrement values of the targeted progress bar.</p>
+            </header>
+          </article>
           <ProgressBars bars={this.state.bars} limit={this.state.limit} />
           <ProgressBarsControl bars={this.state.bars} selectValue={this.state.targetBarIndex} onChangeTarget={this.handleTargetChange.bind(this)} buttons={this.state.buttons} onClickButton={this.handleButtonClick.bind(this)}/>
+          <div className="debug">
+            <pre>{JSON.stringify(this.state)}</pre>
+            <pre>{JSON.stringify(this.state.bars)}</pre>
+            <pre>{JSON.stringify(this.state.barsFinal)}</pre>
+          </div>
         </div>
       );
     } else return null;
