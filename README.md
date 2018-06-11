@@ -1,5 +1,25 @@
 # Frontend Test: Progressbars Solution
 
+## Start project
+
+`npm install`
+
+`npm start` to start dev server
+
+`npm build` to build production code
+
+`npm test` to start test runner in watcher mode
+
+See here for all available [create-react-app scripts](https://github.com/dominicgan/fe-progressbars/blob/master/create-react-app-readme.md#available-scripts)
+
+## Stack
+
+- `create-react-app`
+  - react
+  - webpack
+  - sass (`create-react-app` ejected to include `sass-loader`)
+  - `enzyme`/`jest` for tests
+
 ## Requirements
 
 - Must read data from the endpoint
@@ -23,20 +43,15 @@
 - Using a CSS preprocessor like SASS/SCSS
 - Styling it to a production quality level
 
+## Endpoint
+
+**Endpoint url:** [https://pb-api.herokuapp.com/bars](https://pb-api.herokuapp.com/bars)
+
 Example structure from the endpoint:
 
     {
-    	"buttons": [
-    		10,
-    		38,
-    		-13,
-    		-18
-    	],
-    	"bars": [
-    		62,
-    		45,
-    		62
-    	],
+    	"buttons": [10, 38, -13, -18],
+    	"bars": [62, 45, 62],
     	"limit": 230
     }
 
