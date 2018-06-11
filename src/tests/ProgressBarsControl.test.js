@@ -21,7 +21,7 @@ const testData = {
 // define test element
 const progressBarControls = shallow(<ProgressBarsControl bars={testData.bars} selectValue={testData.selectValue} onChangeTarget={testData.handleChange} buttons={[-20,-10,10,20]} onClickButton={testData.handleClick}/>);
 
-describe('progressBarControls', () => {
+describe('progressBarControls render', () => {
 	test('to render <select>', () => {
 		expect(progressBarControls.find('.progressBarsControl__select').children().is('select')).toEqual(true);
 	});
@@ -43,7 +43,7 @@ describe('progressBarControls', () => {
 	});
 });
 
-describe('progressBarControls Basic Logic', () => {
+describe('progressBarControls logic', () => {
 	test('handleChange function to be triggered on <select> change', () => {
 		progressBarControls.find('select').simulate('change', { target: { value: 1}});
 		expect(testData.handleChange).toHaveBeenCalled();

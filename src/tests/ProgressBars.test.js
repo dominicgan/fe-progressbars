@@ -16,7 +16,7 @@ const testData = {
 // define test element
 const progressBar = shallow(<ProgressBars bars={testData.bars} limit={testData.limit} />);
 
-describe('progressBars', () => {
+describe('progressBars render', () => {
 	test('to render 3 <progress/> bars', () => {
 		expect(progressBar.find('.progressBars__wrapper')).toHaveLength(3);
 	});
@@ -44,6 +44,15 @@ describe('progressBars logic', () => {
 		// bar should have .limit-break class added to it if current value exceeds limit value
 		progressBar.find('progress').forEach((node) => {
 			expect(node.hasClass('limit-break')).toEqual(true);
+		});
+	});
+
+	test('limit break class not added if value does not exceed limit', () => {
+		// set value to exceed limit
+		progressBar.setProps({'bars': [10,10,10]});
+		// bar should have .limit-break class added to it if current value exceeds limit value
+		progressBar.find('progress').forEach((node) => {
+			expect(node.hasClass('limit-break')).toEqual(false);
 		});
 	});
 });
