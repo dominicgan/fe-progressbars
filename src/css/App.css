@@ -11,6 +11,15 @@
 	box-sizing: border-box;
 }
 
+.App {
+	opacity: 0;
+	transition: opacity 0.3s ease-in-out;
+}
+
+.App-ready {
+	opacity: 1;
+}
+
 article,
 .debug {
 	max-width: 500px;

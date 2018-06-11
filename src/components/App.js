@@ -9,7 +9,12 @@ class App extends Component {
     super(props);
     this.ready = false;
     this.state = {
-      'interval': null
+      'interval': null,
+      'buttons': [],
+      'bars': [],
+      'barsFinal': [],
+      'limit': 100,
+      'targetBarIndex': 0
     };
   }
   componentDidMount() {
@@ -92,9 +97,8 @@ class App extends Component {
     this.setState({'interval': intervalObj});
   }
   render() {
-    if (this.ready) {
       return (
-        <div className="App">
+        <div className={"App " + (this.ready ? 'App-ready' : '')}>
           <article>
             <header>
               <h1>Progress Bars</h1>
@@ -115,7 +119,6 @@ class App extends Component {
 
         </div>
       );
-    } else return null;
   }
 }
 
