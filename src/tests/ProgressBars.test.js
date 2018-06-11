@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ProgressBars from '../components/ProgressBars';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+
+import ProgressBars from '../components/ProgressBars';
 
 configure({ adapter: new Adapter() });
 
@@ -32,6 +33,17 @@ describe('progressBars', () => {
 				<progress/>,
 				<span>{testData.bars[i] + '%'}</span>
 				])).toEqual(true);
+		});
+	});
+});
+
+describe('progressBars logic', () => {
+	test('limit break class added if value exceeds limit', () => {
+		// set value to exceed limit
+		progressBar.setProps({'bars': [101,101,101]});
+		// bar should have .limit-break class added to it if current value exceeds limit value
+		progressBar.find('progress').forEach((node) => {
+			expect(node.hasClass('limit-break')).toEqual(true);
 		});
 	});
 });
