@@ -7,23 +7,39 @@ import ProgressBarsControl from './ProgressBarsControl';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.ready = false;
     this.state = {
-      'ready': false,
       'interval': null
     };
   }
   componentDidMount() {
+    this.ready = true;
+    this.fetchData().then((data) => {
+      if (this.ready) {
+        this.setState({
+          'data': JSON.parse(JSON.stringify(data)),
+          'buttons': data.buttons.sort((a, b) => (a - b)),
+          'bars': data.bars,
+          'barsFinal': data.bars,
+          'limit': data.limit,
+          'targetBarIndex': 0
+        });
+      }
+    });
+  }
+  componentWillUnmount(){
+    this.ready = false;
+  }
+  fetchData() {
+    // run fetch in separate method (not within componentDidMount)
+    // to prevent mem leak on unmount
+    // https://stackoverflow.com/a/49906662/5610732
+    let fetchPromise = new Promise((resolve, reject) => {
     fetch('https://pb-api.herokuapp.com/bars')
-      .then((res) => res.json())
-      .then((data) => this.setState({
-        'data': JSON.parse(JSON.stringify(data)),
-        'buttons': data.buttons.sort((a, b) => (a - b)),
-        'bars': data.bars,
-        'barsFinal': data.bars,
-        'limit': data.limit,
-        'ready': true,
-        'targetBarIndex': 0
-      }));
+      .then((res) => resolve(res.json()))
+    });
+
+    return fetchPromise;
   }
   handleTargetChange(e){
     // update target progress bar
@@ -76,7 +92,7 @@ class App extends Component {
     this.setState({'interval': intervalObj});
   }
   render() {
-    if (this.state.ready) {
+    if (this.ready) {
       return (
         <div className="App">
           <article>
